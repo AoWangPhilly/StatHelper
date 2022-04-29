@@ -1,11 +1,5 @@
-from .example import example
-
-
-def capitalize_string(s):
-    if not isinstance(s, str):
-        raise TypeError('Please provide a string')
-    return s.capitalize()
+from example_dir.example import capitalize_string
 
 
 def test_capitalize_string():
-    assert example.capitalize_string('test') == 'Test'
+    assert capitalize_string('test') == 'Test'
