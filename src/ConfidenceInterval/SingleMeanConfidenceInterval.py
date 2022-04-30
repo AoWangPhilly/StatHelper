@@ -1,18 +1,19 @@
+from dataclasses import dataclass
+from typing import Tuple, Union
+
 import scipy.stats as st
 from numpy import sqrt
-from typing import Tuple
-from dataclasses import dataclass
 
 
 def get_z_score(confidence_level: float) -> float:
-    return st.norm.ppf(confidence_level + (1 - confidence_level) / 2)
+    return float(st.norm.ppf(confidence_level + (1 - confidence_level) / 2))
 
 
 def get_t_score(
         confidence_level: float,
         sample_size: int
 ) -> float:
-    return st.t.ppf(q=confidence_level + (1 - confidence_level) / 2, df=sample_size - 1)
+    return float(st.t.ppf(q=confidence_level + (1 - confidence_level) / 2, df=sample_size - 1))
 
 
 class InvalidScoreError(Exception):
@@ -39,13 +40,13 @@ class SingleMeanConfidenceInterval:
 
     @property
     def margin_of_error(self) -> float:
-        return self.critical_value * sqrt(self.variance / self.sample_size)
+        return float(self.critical_value * sqrt(self.variance / self.sample_size))
 
     @property
     def length(self) -> float:
         return 2 * self.margin_of_error
 
-    def get_confidence_interval(self, round_by: int = None) -> Tuple[float, float]:
+    def get_confidence_interval(self, round_by: Union[int, None] = None) -> Tuple[float, float]:
         if round_by is None:
             return (self.mean - self.margin_of_error,
                     self.mean + self.margin_of_error)

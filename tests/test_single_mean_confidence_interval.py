@@ -1,5 +1,7 @@
-from ConfidenceInterval.SingleMeanConfidenceInterval import SingleMeanConfidenceInterval, InvalidScoreError
+from typing import Tuple, cast
+
 import pytest
+from ConfidenceInterval.SingleMeanConfidenceInterval import SingleMeanConfidenceInterval, InvalidScoreError
 
 
 @pytest.mark.parametrize(
@@ -89,7 +91,7 @@ import pytest
                 {
                     "mean": 21.9,
                     "confidence_level": 0.95,
-                    "variance": 4.13414**2,
+                    "variance": 4.13414 ** 2,
                     "sample_size": 10,
                     "score": "t"
                 },
@@ -108,7 +110,7 @@ def test_confidence_interval_round_by_2(test_input, expected):
                 {
                     "mean": 21.9,
                     "confidence_level": 0.95,
-                    "variance": 4.13414**2,
+                    "variance": 4.13414 ** 2,
                     "sample_size": 10,
                     "score": "t"
                 },
@@ -118,7 +120,7 @@ def test_confidence_interval_round_by_2(test_input, expected):
 )
 def test_confidence_interval_no_rounding(test_input, expected):
     ci = SingleMeanConfidenceInterval(**test_input).get_confidence_interval()
-    ci = tuple(map(lambda x: round(x, 3), ci))
+    ci = cast(Tuple[float, float], tuple(map(lambda x: round(x, 3), ci)))
     assert ci == expected
 
 
@@ -151,20 +153,20 @@ def test_margin_of_error(test_input, expected):
     assert round(SingleMeanConfidenceInterval(**test_input).margin_of_error, 2) == expected
 
 
-
 def test_length_of_confidence_interval():
     assert round(SingleMeanConfidenceInterval(mean=4.85,
-                                        confidence_level=0.95,
-                                        variance=0.75**2,
-                                        sample_size=54,
-                                        score="z").length, 2) == 0.4
+                                              confidence_level=0.95,
+                                              variance=0.75 ** 2,
+                                              sample_size=54,
+                                              score="z").length, 2) == 0.4
+
 
 def test_incorrect_score():
     with pytest.raises(InvalidScoreError):
-        var = SingleMeanConfidenceInterval(**{
-            "mean": 21,
-            "confidence_level": 0.95,
-            "variance": 1.76 ** 2,
-            "sample_size": 20,
-            "score": "w"
-        }).critical_value
+        SingleMeanConfidenceInterval(
+            mean=21,
+            confidence_level=0.95,
+            variance=1.76 ** 2,
+            sample_size=20,
+            score="w"
+        ).critical_value

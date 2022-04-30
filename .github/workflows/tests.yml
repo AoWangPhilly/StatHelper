@@ -7,17 +7,17 @@ on:
   pull_request:
     branches:
       - "main"
-      
-      
+
+
 jobs:
   test:
     runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ ubuntu-latest ]
         # Run in all these versions of Python
-        python-version: [3.8, 3.9]
+        python-version: [ 3.8 ]
 
     steps:
       - uses: actions/checkout@v2

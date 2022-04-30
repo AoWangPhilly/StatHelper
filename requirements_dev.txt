@@ -4,3 +4,5 @@ pytest==7.1.2
 pytest-cov==3.0.0
 mypy==0.950
 mypy-extensions==0.4.3
+scipy==1.8.0
+numpy==1.22.3
