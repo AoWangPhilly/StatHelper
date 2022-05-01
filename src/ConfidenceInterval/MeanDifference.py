@@ -3,11 +3,12 @@ from typing import Tuple
 
 from numpy import sqrt
 
+from .ConfidenceInterval import ConfidenceInterval
 from .util import get_degree_of_freedom, get_pooled_sample_variance, get_t_score
 
 
 @dataclass
-class MeanDifferenceConfidenceInterval:
+class MeanDifference(ConfidenceInterval):
     mean_x: float
     mean_y: float
     confidence_level: float

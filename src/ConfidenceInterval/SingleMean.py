@@ -3,6 +3,7 @@ from typing import Tuple, Union
 
 from numpy import sqrt
 
+from .ConfidenceInterval import ConfidenceInterval
 from .util import get_z_score, get_t_score
 
 
@@ -11,7 +12,7 @@ class InvalidScoreError(Exception):
 
 
 @dataclass
-class SingleMeanConfidenceInterval:
+class SingleMean(ConfidenceInterval):
     mean: float
     confidence_level: float
     variance: float
