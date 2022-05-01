@@ -51,10 +51,6 @@ class MeanDifference(ConfidenceInterval):
                           self.sample_variance_y / self.sample_size_m))
 
     @property
-    def margin_of_error(self) -> float:
-        return self.critical_value * self.standard_error
-
-    @property
     def get_confidence_interval(self) -> Tuple[float, float]:
         return (self.mean_x - self.mean_y - self.margin_of_error,
                 self.mean_x - self.mean_y + self.margin_of_error)

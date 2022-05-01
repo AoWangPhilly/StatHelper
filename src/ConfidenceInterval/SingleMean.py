@@ -33,14 +33,6 @@ class SingleMean(ConfidenceInterval):
     def standard_error(self) -> float:
         return float(sqrt(self.variance / self.sample_size))
 
-    @property
-    def margin_of_error(self) -> float:
-        return float(self.critical_value * self.standard_error)
-
-    @property
-    def length(self) -> float:
-        return 2 * self.margin_of_error
-
     def get_confidence_interval(self, round_by: Union[int, None] = None) -> Tuple[float, float]:
         if round_by is None:
             return (self.mean - self.margin_of_error,
