@@ -39,8 +39,12 @@ class SingleMeanConfidenceInterval:
             raise InvalidScoreError("Score must either be a Z or T-critical value")
 
     @property
+    def standard_error(self) -> float:
+        return float(sqrt(self.variance / self.sample_size))
+
+    @property
     def margin_of_error(self) -> float:
-        return float(self.critical_value * sqrt(self.variance / self.sample_size))
+        return float(self.critical_value * self.standard_error)
 
     @property
     def length(self) -> float:
