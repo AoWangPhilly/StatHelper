@@ -158,7 +158,7 @@ def test_length_of_confidence_interval():
                             confidence_level=0.95,
                             variance=0.75 ** 2,
                             sample_size=54,
-                            score="z").length, 2) == 0.4
+                            score="z").width, 2) == 0.4
 
 
 def test_incorrect_score():
