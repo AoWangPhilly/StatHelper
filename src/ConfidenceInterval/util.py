@@ -29,6 +29,6 @@ def get_degree_of_freedom(
         sample_size_n: int,
         sample_size_m: int
 ) -> int:
-    return int((sample_variance_x / sample_size_n + sample_variance_y / sample_size_m) ** 2 / \
+    return int((sample_variance_x / sample_size_n + sample_variance_y / sample_size_m) ** 2 /
                ((sample_variance_x / sample_size_n) ** 2 / (sample_size_n - 1) +
                 (sample_variance_y / sample_size_m) ** 2 / (sample_size_m - 1)))
