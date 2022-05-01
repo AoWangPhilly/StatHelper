@@ -1,19 +1,9 @@
 from dataclasses import dataclass
 from typing import Tuple, Union
 
-import scipy.stats as st
 from numpy import sqrt
 
-
-def get_z_score(confidence_level: float) -> float:
-    return float(st.norm.ppf(confidence_level + (1 - confidence_level) / 2))
-
-
-def get_t_score(
-        confidence_level: float,
-        sample_size: int
-) -> float:
-    return float(st.t.ppf(q=confidence_level + (1 - confidence_level) / 2, df=sample_size - 1))
+from .util import get_z_score, get_t_score
 
 
 class InvalidScoreError(Exception):
@@ -34,7 +24,7 @@ class SingleMeanConfidenceInterval:
             return get_z_score(confidence_level=self.confidence_level)
         elif self.score == "t":
             return get_t_score(confidence_level=self.confidence_level,
-                               sample_size=self.sample_size)
+                               degree_of_freedom=self.sample_size - 1)
         else:
             raise InvalidScoreError("Score must either be a Z or T-critical value")
 
