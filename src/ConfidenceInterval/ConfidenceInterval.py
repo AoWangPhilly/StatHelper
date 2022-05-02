@@ -14,7 +14,7 @@ class ConfidenceInterval(ABC):
         ...
 
     @abstractmethod
-    def get_confidence_interval(self) -> Tuple[float, float]:
+    def get_confidence_interval(self, round_by: int) -> Tuple[float, float]:
         ...
 
     @property
