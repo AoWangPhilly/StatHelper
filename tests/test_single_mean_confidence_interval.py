@@ -1,7 +1,8 @@
 from typing import Tuple, cast
 
 import pytest
-from ConfidenceInterval.SingleMean import SingleMean, InvalidScoreError
+from ConfidenceInterval.Error import InvalidScoreError
+from ConfidenceInterval.SingleMean import SingleMean
 
 
 @pytest.mark.parametrize(
