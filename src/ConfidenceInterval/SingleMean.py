@@ -1,10 +1,10 @@
 from dataclasses import dataclass
 from typing import Tuple, Union
 
-from Error.InvalidScoreError import InvalidScoreError
 from numpy import sqrt
 
 from .ConfidenceInterval import ConfidenceInterval
+from .Error import InvalidScoreError
 from .util import get_z_score, get_t_score
 
 
