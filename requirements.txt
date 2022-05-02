@@ -84,7 +84,7 @@ six==1.16.0
 sniffio==1.2.0
 soupsieve==2.3.2.post1
 stack-data==0.2.0
--e git+ssh://git@github.com/AoWangPhilly/StatHelper.git@98c13445cfef1b998ffc827d1f3a36ba2371fe63#egg=StatHelper
+-e git+ssh://git@github.com/AoWangPhilly/StatHelper.git@026f1f5de476e824a761750ae41845c98fd8c3c5#egg=StatHelper
 terminado==0.13.3
 tinycss2==1.1.1
 toml==0.10.2
