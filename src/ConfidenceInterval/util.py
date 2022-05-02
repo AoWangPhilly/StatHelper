@@ -1,3 +1,5 @@
+from typing import Dict
+
 import scipy.stats as st
 
 
@@ -32,3 +34,13 @@ def get_degree_of_freedom(
     return int((sample_variance_x / sample_size_n + sample_variance_y / sample_size_m) ** 2 /
                ((sample_variance_x / sample_size_n) ** 2 / (sample_size_n - 1) +
                 (sample_variance_y / sample_size_m) ** 2 / (sample_size_m - 1)))
+
+
+def get_chi_squared_critical_values(
+        confidence_level: float,
+        degree_of_freedom: int
+) -> Dict[str, float]:
+    b = confidence_level + (1 - confidence_level) / 2
+    a = 1 - b
+    return {"a": st.chi2.ppf(a, degree_of_freedom),
+            "b": st.chi2.ppf(b, degree_of_freedom)}
