@@ -44,3 +44,11 @@ def get_chi_squared_critical_values(
     a = 1 - b
     return {"a": st.chi2.ppf(a, degree_of_freedom),
             "b": st.chi2.ppf(b, degree_of_freedom)}
+
+
+def get_f_critical_value(
+        confidence_level: float,
+        dfn: int,
+        dfm: int
+) -> float:
+    return st.f.ppf(q=1 - (1 - confidence_level) / 2, dfn=dfn, dfd=dfm)
