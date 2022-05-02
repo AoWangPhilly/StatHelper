@@ -1,2 +1,2 @@
 class InvalidScoreError(Exception):
-    pass
+    ...
