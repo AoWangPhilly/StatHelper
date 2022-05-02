@@ -16,11 +16,11 @@ class MeanDifference(ConfidenceInterval):
 
     @property
     def critical_value(self) -> float:
-        ...
+        return 0.0
 
     @property
     def standard_error(self) -> float:
-        ...
+        return 0.0
 
     def get_confidence_interval(self, round_by: Union[int, None] = None) -> Tuple[float, float]:
         ci = (self.mean_x - self.mean_y - self.margin_of_error,
