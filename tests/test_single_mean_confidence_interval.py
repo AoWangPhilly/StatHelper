@@ -1,5 +1,3 @@
-from typing import Tuple, cast
-
 import pytest
 from ConfidenceInterval.Error import InvalidScoreError
 from ConfidenceInterval.SingleMean import SingleMean
@@ -119,9 +117,9 @@ def test_confidence_interval_round_by_2(test_input, expected):
         )
     ]
 )
-def test_confidence_interval_no_rounding(test_input, expected):
+def test_confidence_interval_no_rounding(test_input, expected, helpers):
     ci = SingleMean(**test_input).get_confidence_interval()
-    ci = cast(Tuple[float, float], tuple(map(lambda x: round(x, 3), ci)))
+    ci = helpers.round_confidence_interval(ci, round_it=3)
     assert ci == expected
 
 
