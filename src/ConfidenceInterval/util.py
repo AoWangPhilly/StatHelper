@@ -51,4 +51,4 @@ def get_f_critical_value(
         dfn: int,
         dfm: int
 ) -> float:
-    return st.f.ppf(q=1 - (1 - confidence_level) / 2, dfn=dfn, dfd=dfm)
+    return float(st.f.ppf(q=1 - (1 - confidence_level) / 2, dfn=dfn, dfd=dfm))
