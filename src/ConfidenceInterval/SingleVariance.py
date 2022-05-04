@@ -9,7 +9,7 @@ class SingleVariance:
     sample_variance: float
     confidence_level: float
     sample_size: int
-    
+
     @property
     def confidence_interval(self) -> Tuple[float, float]:
         critical_values = get_chi_squared_critical_values(
