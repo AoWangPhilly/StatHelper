@@ -22,9 +22,9 @@ class SingleMean(ConfidenceInterval):
     def critical_value(self) -> float:
         alpha = self._get_alpha()
         if self.score == "z":
-            return st.norm.ppf(alpha)
+            return float(st.norm.ppf(alpha))
         elif self.score == "t":
-            return st.t.ppf(alpha, self.sample_size - 1)
+            return float(st.t.ppf(alpha, self.sample_size - 1))
         else:
             raise InvalidScoreError("Score must either be a Z or T-critical value")
 

@@ -40,9 +40,9 @@ class ConfidenceInterval(ABC):
         if self.tails == "=":
             return value - self.margin_of_error, value + self.margin_of_error
         elif self.tails == ">=":
-            return value - self.margin_of_error, PINF
+            return NINF, value - self.margin_of_error
         else:
-            return NINF, value + self.margin_of_error
+            return value + self.margin_of_error, PINF
 
     @property
     def margin_of_error(self) -> float:
