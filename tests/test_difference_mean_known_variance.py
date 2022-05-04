@@ -11,6 +11,6 @@ def test_confidence_interval(helpers):
             sample_variance_y=36,
             sample_size_n=10,
             sample_size_m=12
-        ).get_confidence_interval(),
+        ).confidence_interval,
         round_it=2
     ) == (-8.06, -0.34)

@@ -62,6 +62,6 @@ from ConfidenceInterval.MeanDifferenceUnknownVariance import MeanDifferenceUnkno
 )
 def test_confidence_interval(test_input, expected, helpers):
     assert helpers.round_confidence_interval(
-        MeanDifferenceUnknownVariance(**test_input).get_confidence_interval(),
+        MeanDifferenceUnknownVariance(**test_input).confidence_interval,
         round_it=2
     ) == expected

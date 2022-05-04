@@ -34,6 +34,6 @@ from ConfidenceInterval.SingleVariance import SingleVariance
 )
 def test_confidence_interval(test_input, expected, helpers):
     assert helpers.round_confidence_interval(
-        SingleVariance(**test_input).find_confidence_interval(),
+        SingleVariance(**test_input).confidence_interval,
         round_it=3
     ) == expected

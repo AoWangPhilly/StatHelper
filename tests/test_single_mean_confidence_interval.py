@@ -98,8 +98,11 @@ from ConfidenceInterval.SingleMean import SingleMean
         )
     ]
 )
-def test_confidence_interval_round_by_2(test_input, expected):
-    assert SingleMean(**test_input).get_confidence_interval(round_by=2) == expected
+def test_confidence_interval_round_by_2(test_input, expected, helpers):
+    assert helpers.round_confidence_interval(
+        SingleMean(**test_input).confidence_interval,
+        round_it=2
+    ) == expected
 
 
 @pytest.mark.parametrize(
@@ -118,7 +121,7 @@ def test_confidence_interval_round_by_2(test_input, expected):
     ]
 )
 def test_confidence_interval_no_rounding(test_input, expected, helpers):
-    ci = SingleMean(**test_input).get_confidence_interval()
+    ci = SingleMean(**test_input).confidence_interval
     ci = helpers.round_confidence_interval(ci, round_it=3)
     assert ci == expected
 
