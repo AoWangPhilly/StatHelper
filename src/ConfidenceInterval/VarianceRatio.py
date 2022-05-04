@@ -12,7 +12,8 @@ class VarianceRatio:
     sample_size_n: int
     sample_size_m: int
 
-    def find_confidence_interval(self) -> Tuple[float, float]:
+    @property
+    def confidence_interval(self) -> Tuple[float, float]:
         f_critical_value_1 = get_f_critical_value(
             confidence_level=self.confidence_level,
             dfn=self.sample_size_n - 1,
@@ -29,5 +30,5 @@ class VarianceRatio:
 
     @property
     def width(self) -> float:
-        lower_limit, upper_limit = self.find_confidence_interval()
+        lower_limit, upper_limit = self.confidence_interval
         return upper_limit - lower_limit
